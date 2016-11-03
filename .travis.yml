@@ -1,6 +1,6 @@
 sudo: required
 
-#language: c
+language: c
 
 #env:
 #  -dsm=5.2
@@ -10,4 +10,7 @@ services:
   
 before_install:
 - docker pull synocommunity/spksrc
-- docker run -it -v /spksrc synocommunity/spksrc /bin/bash -c "find /"
+- docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "find /"
+
+script:
+- ls
