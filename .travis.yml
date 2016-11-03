@@ -7,4 +7,4 @@ services:
   
 before_install:
 - docker pull synocommunity/spksrc
-- docker docker run -it -v torrentalle/spksrc:/spksrc synocommunity/spksrc /bin/bash -c "ls /spksrc"
+- docker docker run -it -v ./:/spksrc synocommunity/spksrc /bin/bash -c "ls /spksrc"
