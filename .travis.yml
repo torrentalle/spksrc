@@ -2,15 +2,15 @@ sudo: required
 
 language: c
 
-#env:
-#  -dsm=5.2
+env:
+  -SYNOARCH=evansport
+  -SYNOARCH=x64
 
 services:
   - docker
   
 before_install:
 - docker pull synocommunity/spksrc
-- docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "find /"
 
 script:
-- ls
+- docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "make setup && cd spk/gogs && make arch-$SYNOARCH"
