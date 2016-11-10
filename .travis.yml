@@ -1,67 +1,68 @@
 sudo: required
 
 cache:
-  bundler: true
   directories:
     - $HOME/docker
 
-language: c
+language: false
 
 env:
-  - SYNOARCH=88f6281 DSM=4.3
-  - SYNOARCH=88f6281 DSM=5.0
-  - SYNOARCH=88f6281 DSM=5.1
-  - SYNOARCH=88f6281 DSM=5.2
-  - SYNOARCH=alpine DSM=5.1
-  - SYNOARCH=alpine DSM=5.2
-  - SYNOARCH=armada370 DSM=4.3
-  - SYNOARCH=armada370 DSM=5.0
-  - SYNOARCH=armada370 DSM=5.1
-  - SYNOARCH=armada370 DSM=5.2
-  - SYNOARCH=armada375 DSM=5.1
-  - SYNOARCH=armada375 DSM=5.2
-  - SYNOARCH=armada38x DSM=5.2
-  - SYNOARCH=armadaxp DSM=4.3
-  - SYNOARCH=armadaxp DSM=5.0
-  - SYNOARCH=armadaxp DSM=5.1
-  - SYNOARCH=armadaxp DSM=5.2
-  - SYNOARCH=avoton DSM=5.1
-  - SYNOARCH=avoton DSM=5.2
-  - SYNOARCH=braswell DSM=5.2
-  - SYNOARCH=bromolow DSM=4.3
-  - SYNOARCH=bromolow DSM=5.0
-  - SYNOARCH=bromolow DSM=5.1
-  - SYNOARCH=bromolow DSM=5.2
-  - SYNOARCH=cedarview DSM=4.3
-  - SYNOARCH=cedarview DSM=5.0
-  - SYNOARCH=cedarview DSM=5.1
-  - SYNOARCH=cedarview DSM=5.2
-  - SYNOARCH=comcerto2k DSM=5.0
-  - SYNOARCH=comcerto2k DSM=5.1
-  - SYNOARCH=comcerto2k DSM=5.2
-  - SYNOARCH=evansport DSM=4.3
-  - SYNOARCH=evansport DSM=5.0
-  - SYNOARCH=evansport DSM=5.1
-  - SYNOARCH=evansport DSM=5.2
-  - SYNOARCH=monaco DSM=5.2
-  - SYNOARCH=powerpc DSM=4.0
-  - SYNOARCH=ppc824x DSM=4.2
-  - SYNOARCH=ppc853x DSM=4.3
-  - SYNOARCH=ppc853x DSM=5.0
-  - SYNOARCH=ppc853x DSM=5.1
-  - SYNOARCH=ppc853x DSM=5.2
-  - SYNOARCH=ppc854x DSM=4.0
-  - SYNOARCH=qoriq DSM=4.3
-  - SYNOARCH=qoriq DSM=5.0
-  - SYNOARCH=qoriq DSM=5.1
-  - SYNOARCH=qoriq DSM=5.2
-  - SYNOARCH=x64 DSM=5.0
-  - SYNOARCH=x64 DSM=5.1
-  - SYNOARCH=x64 DSM=5.2
-  - SYNOARCH=x86 DSM=4.3
-  - SYNOARCH=x86 DSM=5.0
-  - SYNOARCH=x86 DSM=5.1
-  - SYNOARCH=x86 DSM=5.2
+  # - SYNOARCH=88f6281 DSM=4.3
+  # - SYNOARCH=88f6281 DSM=5.0
+  # - SYNOARCH=88f6281 DSM=5.1
+  # - SYNOARCH=88f6281 DSM=5.2
+  # - SYNOARCH=alpine DSM=5.1
+  # - SYNOARCH=alpine DSM=5.2
+  # - SYNOARCH=armada370 DSM=4.3
+  # - SYNOARCH=armada370 DSM=5.0
+  # - SYNOARCH=armada370 DSM=5.1
+  # - SYNOARCH=armada370 DSM=5.2
+  # - SYNOARCH=armada375 DSM=5.1
+  # - SYNOARCH=armada375 DSM=5.2
+  # - SYNOARCH=armada38x DSM=5.2
+  # - SYNOARCH=armadaxp DSM=4.3
+  # - SYNOARCH=armadaxp DSM=5.0
+  # - SYNOARCH=armadaxp DSM=5.1
+  # - SYNOARCH=armadaxp DSM=5.2
+  # - SYNOARCH=avoton DSM=5.1
+  # - SYNOARCH=avoton DSM=5.2
+  # - SYNOARCH=braswell DSM=5.2
+  # - SYNOARCH=bromolow DSM=4.3
+  # - SYNOARCH=bromolow DSM=5.0
+  # - SYNOARCH=bromolow DSM=5.1
+  # - SYNOARCH=bromolow DSM=5.2
+  # - SYNOARCH=cedarview DSM=4.3
+  # - SYNOARCH=cedarview DSM=5.0
+  # - SYNOARCH=cedarview DSM=5.1
+  # - SYNOARCH=cedarview DSM=5.2
+  # - SYNOARCH=comcerto2k DSM=5.0
+  # - SYNOARCH=comcerto2k DSM=5.1
+  # - SYNOARCH=comcerto2k DSM=5.2
+  # - SYNOARCH=evansport DSM=4.3
+  # - SYNOARCH=evansport DSM=5.0
+  # - SYNOARCH=evansport DSM=5.1
+  # - SYNOARCH=evansport DSM=5.2
+  # - SYNOARCH=monaco DSM=5.2
+  # - SYNOARCH=powerpc DSM=4.0
+  # - SYNOARCH=ppc824x DSM=4.2
+  # - SYNOARCH=ppc853x DSM=4.3
+  # - SYNOARCH=ppc853x DSM=5.0
+  # - SYNOARCH=ppc853x DSM=5.1
+  # - SYNOARCH=ppc853x DSM=5.2
+  # - SYNOARCH=ppc854x DSM=4.0
+  # - SYNOARCH=qoriq DSM=4.3
+  # - SYNOARCH=qoriq DSM=5.0
+  # - SYNOARCH=qoriq DSM=5.1
+  # - SYNOARCH=qoriq DSM=5.2
+  # - SYNOARCH=x64 DSM=5.0
+  # - SYNOARCH=x64 DSM=5.1
+  # - SYNOARCH=x64 DSM=5.2
+  # - SYNOARCH=x86 DSM=4.3
+  # - SYNOARCH=x86 DSM=5.0
+  # - SYNOARCH=x86 DSM=5.1
+  # - SYNOARCH=x86 DSM=5.2
+  - SPK=node
+  - SPK=haproxy
 
 services:
   - docker
@@ -71,9 +72,10 @@ before_install:
   - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
 
 script:
-- export PACKAGES=`find spk/ -maxdepth 2 -name Makefile -print | awk -F '/' '{print $2}'`
-- echo $PACKAGES
-- docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make dsm-$DSM && for PKG in $PACKAGES; do cd spk/$PKG && make arch-$SYNOARCH && cd../..; done"
+#- export PACKAGES=`find spk/ -maxdepth 2 -name Makefile -print | awk -F '/' '{print $2}'`
+#- echo $PACKAGES
+#- docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make dsm-$DSM && for PKG in $PACKAGES; do cd spk/$PKG && make arch-$SYNOARCH && cd../..; done"
+- docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc/spk/$SPK && make all-supported"
 
 before_cache:
   # Save tagged docker images
