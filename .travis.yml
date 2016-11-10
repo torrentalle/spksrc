@@ -65,4 +65,5 @@ before_install:
 - docker pull synocommunity/spksrc
 
 script:
-- docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make setup && make dsm-$DSM && cd cross/openssl && make arch-$SYNOARCH"
+- export PACKAGES=`find spk/ -maxdepth 2 -name Makefile -print | awk -F '/' '{print $2}'`
+- docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make dsm-$DSM && for PKG in $PACKAGES; do cd spk/$PKG && make arch-$SYNOARCH && cd../..; done"
