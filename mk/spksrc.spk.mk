@@ -51,6 +51,7 @@ include ../../mk/spksrc.copy.mk
 strip: copy
 include ../../mk/spksrc.strip.mk
 
+include ../../mk/spksrc.travis.mk
 
 ### Packaging rules
 $(WORK_DIR)/package.tgz: strip
@@ -339,6 +340,24 @@ publish-all-supported:
 	  for arch in $(sort $(basename $(subst -,.,$(basename $(subst .,,$(ARCHS_NO_KRNLSUPP)))))) ; \
 	  do \
 	    $(MAKE) publish-latest-arch-$$arch ; \
+	  done \
+	fi
+
+list-all-supported: $(WORK_DIR)/list-all-supported
+
+$(WORK_DIR)/list-all-supported:
+	@$(MSG) List of all supported archs
+	@mkdir -p $(WORK_DIR)
+	@ echo -n "" > $@
+	@if $(MAKE) kernel-required >/dev/null 2>&1 ; then \
+	  for arch in $(sort $(basename $(subst -,.,$(basename $(subst .,,$(ARCHS_DUPES)))))) ; \
+	  do \
+	    echo $$arch >> $@ ; \
+	  done \
+	else \
+	  for arch in $(sort $(basename $(subst -,.,$(basename $(subst .,,$(ARCHS_NO_KRNLSUPP)))))) ; \
+	  do \
+	    echo $$arch >> $@; \
 	  done \
 	fi
 

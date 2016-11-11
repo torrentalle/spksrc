@@ -96,3 +96,27 @@ setup-synocommunity: setup
 		-e "s|REPORT_URL=.*|REPORT_URL=https://github.com/SynoCommunity/spksrc/issues|" \
 		local.mk
 
+.PHONY: travis
+travis: .travis.yml
+
+%-travis-env: spk/%/Makefile
+	@export SPK=
+	@cd $(dir $^) && env $(MAKE) list-all-supported 
+	@cd $(dir $^) && cat work/list-all-supported |  awk \
+	  '{print "  - SPK=$* SYNOARCH=" $$1 }' >> ../../.travis.yml.tmp
+
+.travis.yml:
+	@echo "Generating .travis.yml file"
+	@echo "#Generated automatically using make travis" > $@.tmp
+	@echo "sudo: required" >> $@.tmp
+	@echo "language: false" >> $@.tmp
+	@echo "services:" >> $@.tmp
+	@echo "  - docker" >> $@.tmp
+	@echo "env:" >> $@.tmp
+	@for SPK in $(SUPPORTED_SPKS) ; \
+	do \
+	  env $(MAKE) $$SPK-travis-env ; \
+	done
+	@echo "script:" >> $@.tmp
+	@echo "  - docker run -it -v \`pwd\`:/spksrc synocommunity/spksrc /bin/bash -c \"cd /spksrc/spk/$$SPK && make arch-$$SYNOARCH \" " >> $@.tmp
+	@mv $@.tmp  $@
