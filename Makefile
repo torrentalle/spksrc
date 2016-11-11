@@ -117,5 +117,6 @@ travis: .travis.yml
 	  env $(MAKE) $$SPK-travis-env ; \
 	done
 	@echo "script:" >> $@.tmp
-	@echo '  - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc/spk/$$SPK && make arch-$$SYNOARCH" ' >> $@.tmp
+	@echo '  - docker pull synocommunity/spksrc'
+	@echo '  - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make setup && cd spk/$$SPK && make arch-$$SYNOARCH && exit $$?" ' >> $@.tmp
 	@mv $@.tmp  $@
