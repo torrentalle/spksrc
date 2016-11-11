@@ -100,7 +100,7 @@ setup-synocommunity: setup
 travis: .travis.yml
 
 %-travis-env: spk/%/Makefile
-	@cd $(dir $^) && env $(MAKE) list-all-supported 
+	@cd $(dir $^) && make list-all-supported 
 	@cd $(dir $^) && cat work/list-all-supported |  awk \
 	  '{print "  - SPK=$* SYNOARCH=" $$1 }' >> ../../.travis.yml.tmp
 
@@ -117,6 +117,6 @@ travis: .travis.yml
 	  env $(MAKE) $$SPK-travis-env ; \
 	done
 	@echo "script:" >> $@.tmp
-	@echo '  - docker pull synocommunity/spksrc'
+	@echo '  - docker pull synocommunity/spksrc' >> $@.tmp
 	@echo '  - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make setup && cd spk/$$SPK && make arch-$$SYNOARCH && exit $$?" ' >> $@.tmp
 	@mv $@.tmp  $@
