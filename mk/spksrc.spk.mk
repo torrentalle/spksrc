@@ -51,8 +51,6 @@ include ../../mk/spksrc.copy.mk
 strip: copy
 include ../../mk/spksrc.strip.mk
 
-include ../../mk/spksrc.travis.mk
-
 ### Packaging rules
 $(WORK_DIR)/package.tgz: strip
 	$(create_target_dir)

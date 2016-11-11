@@ -1185,4 +1185,4 @@ env:
   - SPK=sickrage SYNOARCH=qoriq
   - SPK=sickrage SYNOARCH=x64
 script:
-  - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc/spk/ && make arch-88f6281 " 
+  - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc/spk/$SPK && make arch-$SYNOARCH" 
