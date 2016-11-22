@@ -29,4 +29,5 @@ before_install:
 # Build spk package
 script:
   - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make setup && cd spk/$PKG && make arch-$SYNOARCH"
-  - ls packages/gogs_$SYNOARCH*.spk
+  # docker run always return exit code 0. This line is to test that SPK has been build. 
+  - ls packages/${PKG}_${SYNOARCH}*.spk
