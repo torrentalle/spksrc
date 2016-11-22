@@ -24,4 +24,5 @@ before_install:
 
 script:
   - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make setup && cd spk/gogs && make arch-xxxxx; echo $?"
+  - ls packages/gogs_$SYNOARCH*.spk
 #  - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make setup && cd spk/$SPK && make arch-$SYNOARCH"
