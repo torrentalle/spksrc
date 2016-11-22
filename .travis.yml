@@ -1,0 +1,33 @@
+# Travis config file tu build spk package
+
+sudo: required
+language: false
+
+# Build environment configuration
+env:
+  global:
+    - PKG=gogs
+  matrix:
+    - SYNOARCH=88f6281
+    - SYNOARCH=alpine
+    - SYNOARCH=armada370
+    - SYNOARCH=armada375
+    - SYNOARCH=armada38x
+    - SYNOARCH=armadaxp
+    - SYNOARCH=comcerto2k
+    - SYNOARCH=evansport
+    - SYNOARCH=monaco
+    - SYNOARCH=ppc853x
+    - SYNOARCH=qoriq
+    - SYNOARCH=x64
+
+# spksrc docker image
+services:
+  - docker
+
+before_install:
+  - docker pull synocommunity/spksrc
+
+# Build spk packahe
+script:
+  - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make setup && cd spk/$PKG && make arch-$SYNOARCH"
