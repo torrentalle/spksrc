@@ -28,6 +28,7 @@ services:
 before_install:
   - docker pull synocommunity/spksrc
 
-# Build spk packahe
+# Build spk package
 script:
   - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make setup && cd spk/$PKG && make arch-$SYNOARCH"
+  - ls packages/gogs_$SYNOARCH*.spk
