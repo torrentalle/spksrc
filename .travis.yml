@@ -17,8 +17,6 @@ env:
     - SYNOARCH=comcerto2k
     - SYNOARCH=evansport
     - SYNOARCH=monaco
-    - SYNOARCH=ppc853x
-    - SYNOARCH=qoriq
     - SYNOARCH=x64
 
 # spksrc docker image
